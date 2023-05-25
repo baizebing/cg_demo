@@ -1,8 +1,8 @@
 #include "scene.h"
 #include "gl_resource.h"
 
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_WIDTH = 1920;
+const unsigned int SCR_HEIGHT = 1080;
 const std::string WINDOW_NAME = "LearnOpenGL";
 
 int main()
@@ -10,7 +10,7 @@ int main()
 	//≥ı ºªØglfw°¢glad
 	auto spGLResource = std::make_shared<GLResource>();
 	spGLResource->CreateGLFWWindow(SCR_WIDTH, SCR_HEIGHT, WINDOW_NAME);
-	std::cout << "œ‘ø®–Õ∫≈£∫" << spGLResource->GetGPUVersion() << std::endl;
+	std::cout << "Graphics: " << spGLResource->GetGPUVersion() << std::endl;
 
 	auto spCamera = std::make_shared<Camera>(glm::vec3(0.f, 0.f, 3.f));
 	auto spScene = std::make_shared<Scene>(spGLResource, spCamera);
