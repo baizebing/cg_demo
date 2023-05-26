@@ -7,7 +7,7 @@ const std::string WINDOW_NAME = "LearnOpenGL";
 
 int main()
 {
-	//≥ı ºªØglfw°¢glad
+	//setup with glfw & glad
 	auto spGLResource = std::make_shared<GLResource>();
 	spGLResource->CreateGLFWWindow(SCR_WIDTH, SCR_HEIGHT, WINDOW_NAME);
 	std::cout << "Graphics: " << spGLResource->GetGPUVersion() << std::endl;
