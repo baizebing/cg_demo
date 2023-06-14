@@ -64,6 +64,12 @@ public:
 
 	void SetPolygonMode(POLYGON_MODE polygonMode);
 
+	// material color
+	glm::vec4 m_vecDiffuseColor;
+	glm::vec4 m_vecSpecularColor;
+	glm::vec4 m_vecAmbientColor;
+	glm::vec4 m_vecEmissiveColor;
+
 private:
 	float m_fBlend;
 	bool m_bBlend;

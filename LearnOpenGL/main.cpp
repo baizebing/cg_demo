@@ -25,7 +25,8 @@ int main()
 
 	auto spEntity = std::make_shared<Entity>();
 	auto spLightingRenderPass = std::make_shared<RenderPass>(spEntity, spRenderState);
-	spEntity->AddMeshNode("../resources/objects/backpack/backpack.obj", spRenderState);
+	//spEntity->AddMeshNode("../resources/objects/backpack/backpack.obj", spRenderState);
+	spEntity->AddMeshNode("../resources/objects/intelcar/intel.obj", spRenderState);
 
 	spScene->AddRenderPass(spLightingRenderPass);
 

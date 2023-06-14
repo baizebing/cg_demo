@@ -15,4 +15,5 @@ public:
 private:
 	void LoadMaterialTextures(std::shared_ptr<Texture>&spTexture, aiMaterial* aiMat,
 		aiTextureType aiTexture, TextureType eTextureType, const std::string& strPath);
+	void LoadMaterialColor(aiMaterial* aiMat, glm::vec4& diffuse, glm::vec4& specular, glm::vec4& ambient, glm::vec4& emissive);
 };
