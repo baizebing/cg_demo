@@ -16,7 +16,7 @@ int main()
 	auto spScene = std::make_shared<Scene>(spGLResource, spCamera);
 	spScene->SetBackGround(glm::vec4(0.2f, 0.3f, 0.3f, 1.0f));
 
-	auto spShader = std::make_shared<Shader>("../resources/shaders/model/vertex.vs", "../resources/shaders/model/fragment.fs");
+	auto spShader = std::make_shared<Shader>("../resources/shaders/model/vertex.vert", "../resources/shaders/model/fragment.frag");
 	auto spTexture = std::make_shared<Texture>();
 	auto spRenderState = std::make_shared<RenderState>(spShader, spTexture);
 	spRenderState->SetDepthTest(true);

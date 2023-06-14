@@ -44,6 +44,7 @@ public:
 	void ApplyTexture();
 	void ApplyTransform(std::shared_ptr<Camera>spCamera);
 	void ApplyLights(std::shared_ptr<Camera> spCamera);
+	void ApplyMaterial(const glm::vec3& color);
 
 	void SetBlend(float fBlend);
 	void SetDepthTest(bool bDepthTest);
@@ -63,12 +64,6 @@ public:
 	PRIMITIVE_MODE GetPrimitiveMode()const;
 
 	void SetPolygonMode(POLYGON_MODE polygonMode);
-
-	// material color
-	glm::vec4 m_vecDiffuseColor;
-	glm::vec4 m_vecSpecularColor;
-	glm::vec4 m_vecAmbientColor;
-	glm::vec4 m_vecEmissiveColor;
 
 private:
 	float m_fBlend;

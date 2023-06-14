@@ -12,6 +12,12 @@ public:
 	void ProcessMesh(aiMesh* pMesh, const aiScene* pScene, const std::string& strPath);
 	void Prender() override;
 	void Draw() override;
+
+	// material color
+	glm::vec4 m_vecDiffuseColor;
+	glm::vec4 m_vecSpecularColor;
+	glm::vec4 m_vecAmbientColor;
+	glm::vec4 m_vecEmissiveColor;
 private:
 	void LoadMaterialTextures(std::shared_ptr<Texture>&spTexture, aiMaterial* aiMat,
 		aiTextureType aiTexture, TextureType eTextureType, const std::string& strPath);

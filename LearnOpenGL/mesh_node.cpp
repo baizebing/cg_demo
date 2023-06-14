@@ -11,12 +11,13 @@ MeshNode::~MeshNode()
 
 void MeshNode::Prender()
 {
-
+	m_spRenderState->ApplyMaterial(m_vecDiffuseColor);
 }
 
 void MeshNode::Draw()
 {
 	Node::Prender();
+	MeshNode::Prender();
 	Node::Draw();
 }
 
@@ -60,8 +61,7 @@ void MeshNode::ProcessMesh(aiMesh* pMesh, const aiScene* pScene,const std::strin
 	LoadMaterialTextures(spTexture, aiMaterial, aiTextureType_HEIGHT, TextureType::NORMAL, sDirectory);
 	LoadMaterialTextures(spTexture, aiMaterial, aiTextureType_AMBIENT, TextureType::HEIGHT, sDirectory);
 
-	LoadMaterialColor(aiMaterial, m_spRenderState->m_vecDiffuseColor, m_spRenderState->m_vecSpecularColor, 
-		m_spRenderState->m_vecAmbientColor, m_spRenderState->m_vecEmissiveColor);
+	LoadMaterialColor(aiMaterial, m_vecDiffuseColor, m_vecSpecularColor, m_vecAmbientColor, m_vecEmissiveColor);
 	SetVAOVBO();
 }
 

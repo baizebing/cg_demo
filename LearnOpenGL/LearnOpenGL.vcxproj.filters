@@ -151,10 +151,10 @@
     <None Include="..\resources\shaders\light\light.vs">
       <Filter>shader\light</Filter>
     </None>
-    <None Include="..\resources\shaders\model\fragment.fs">
+    <None Include="..\resources\shaders\model\fragment.frag">
       <Filter>shader\model</Filter>
     </None>
-    <None Include="..\resources\shaders\model\vertex.vs">
+    <None Include="..\resources\shaders\model\vertex.vert">
       <Filter>shader\model</Filter>
     </None>
   </ItemGroup>
