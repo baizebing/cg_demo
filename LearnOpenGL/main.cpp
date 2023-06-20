@@ -12,7 +12,7 @@ int main()
 	spGLResource->CreateGLFWWindow(SCR_WIDTH, SCR_HEIGHT, WINDOW_NAME);
 	std::cout << "Graphics: " << spGLResource->GetGPUVersion() << std::endl;
 
-	auto spCamera = std::make_shared<Camera>(glm::vec3(0.f, 0.f, 3.f));
+	auto spCamera = std::make_shared<Camera>(glm::vec3(0.f, 3.f, 5.f),-90.0f, -25.0f);
 	auto spScene = std::make_shared<Scene>(spGLResource, spCamera);
 	spScene->SetBackGround(glm::vec4(0.2f, 0.3f, 0.3f, 1.0f));
 
@@ -27,6 +27,7 @@ int main()
 	auto spLightingRenderPass = std::make_shared<RenderPass>(spEntity, spRenderState);
 	//spEntity->AddMeshNode("../resources/objects/backpack/backpack.obj", spRenderState);
 	spEntity->AddMeshNode("../resources/objects/intelcar/intel.obj", spRenderState);
+	//spEntity->AddMeshNode("../resources/objects/intelcar/bowl_with_texture.obj", spRenderState);
 
 	spScene->AddRenderPass(spLightingRenderPass);
 
