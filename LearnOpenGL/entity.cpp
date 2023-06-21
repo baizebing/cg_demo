@@ -46,6 +46,7 @@ void Entity::ProcessMeshNode(aiNode* node, const aiScene* scene, const std::stri
 		auto spMeshNode = std::make_shared<MeshNode>();
 		spMeshNode->SetRenderState(spRenderState);
 		spMeshNode->ProcessMesh(mesh, scene, strPath);
+		spMeshNode->SetTransform(m_transform);
 		m_listNode.push_back(spMeshNode);
 	}
 	for (int i = 0; i < node->mNumChildren; i++)

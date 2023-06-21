@@ -14,6 +14,7 @@ public:
 	void AddMeshNode(const std::string& strPath, std::shared_ptr<RenderState>& spRenderState);
 	void AddGeometryNode(std::shared_ptr<Node> spNode);
 
+	std::shared_ptr<Transform> m_transform{};
 private:
 	void ProcessMeshNode(aiNode* node, const aiScene* scene, const std::string& strPath, 
 		std::shared_ptr<RenderState>& spRenderState);
