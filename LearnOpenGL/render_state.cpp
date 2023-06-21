@@ -204,10 +204,10 @@ void RenderState::ApplyLights(std::shared_ptr<Camera> spCamera)
 	}
 }
 
-void RenderState::ApplyMaterial(const glm::vec3& color)
+void RenderState::ApplyMaterial(const glm::vec4& color)
 {
 	//m_spShader->SetVec3("material.diffuse", m_vecDiffuseColor);
-	m_spShader->SetVec3("material.diffuse", color);
+	m_spShader->SetVec4("material.diffuse", color);
 }
 
 void RenderState::SetPatchVertices(int iVertices)

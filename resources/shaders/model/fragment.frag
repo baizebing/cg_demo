@@ -7,9 +7,9 @@ in VS_OUT {
 } fs_in;
 
 struct Material {
-    vec3 ambient;
-    vec3 diffuse;
-    vec3 specular;
+    vec4 ambient;
+    vec4 diffuse;
+    vec4 specular;
     float shininess;
 }; 
   
@@ -20,5 +20,5 @@ uniform sampler2D texture_diffuse1;
 void main()
 {
     //FragColor = texture(texture_diffuse1, fs_in.texCoord);
-    FragColor = vec4(material.diffuse, 1.0);
+    FragColor = vec4(material.diffuse.rgb, 1.0);
 }

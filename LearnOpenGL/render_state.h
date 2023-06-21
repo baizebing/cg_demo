@@ -44,7 +44,7 @@ public:
 	void ApplyTexture();
 	void ApplyTransform(std::shared_ptr<Camera>spCamera);
 	void ApplyLights(std::shared_ptr<Camera> spCamera);
-	void ApplyMaterial(const glm::vec3& color);
+	void ApplyMaterial(const glm::vec4& color);
 
 	void SetBlend(float fBlend);
 	void SetDepthTest(bool bDepthTest);
