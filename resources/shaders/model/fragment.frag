@@ -49,7 +49,7 @@ vec3 CalcDirLight(DirLight light,vec3 normal, vec3 viewDir)
     vec3 halfv = normalize(viewDir+lightDir);
     float spec = pow(max(dot(normal,halfv),0.0),light.shininess);
 
-    vec3 ambient = light.ambient * material.ambient.rgb;
+    vec3 ambient = light.ambient * material.diffuse.rgb;
     vec3 diffuse = light.diffuse * diff * material.diffuse.rgb;
     vec3 specular = light.specular *spec* material.specular.rgb;
     return ambient+diffuse+specular;
