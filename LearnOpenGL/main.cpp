@@ -19,11 +19,21 @@ int main()
 	auto spShader = std::make_shared<Shader>("../resources/shaders/model/vertex.vert", "../resources/shaders/model/fragment.frag");
 	auto spBowlShader = std::make_shared<Shader>("../resources/shaders/model/bowl_vertex.vert", "../resources/shaders/model/bowl_fragment.frag");
 	auto spTexture = std::make_shared<Texture>();
+
+	auto dirLight = std::make_shared<DirLight>();
+	dirLight->SetLightDirection(glm::vec3(-1.f, -1.0f, -0.3f));
+	dirLight->SetAmbient(glm::vec3(0.2f));
+	dirLight->SetDiffuse(glm::vec4(0.4f));
+	dirLight->SetSpecular(glm::vec3(0.5f), 32.f);
+	dirLight->SetLightType(LightType::DIR_LIGHT);
+	std::vector<std::shared_ptr<Light>> vecLights;
+	vecLights.push_back(dirLight);
 	// Render state
 	auto spRenderState = std::make_shared<RenderState>(spShader, spTexture);
 	spRenderState->SetDepthTest(true);
 	spRenderState->SetDrawMode(DRAW_MODE::ELEMENT_MODE);
 	spRenderState->SetPrimitiveMode(PRIMITIVE_MODE::TRIANGLES_MODE);
+	spRenderState->SetLights(vecLights);
 	// Bowl Render state
 	auto spBowlRenderState = std::make_shared<RenderState>(spBowlShader, std::make_shared<Texture>());
 	spBowlRenderState->SetDepthTest(true);
