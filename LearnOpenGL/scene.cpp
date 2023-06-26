@@ -76,4 +76,8 @@ void Scene::ProcessInput()
 		m_spCamera->ProcessKeyboard(Movement::LEFT, DeltaFrame);
 	if (glfwGetKey(pGLFWwindow, GLFW_KEY_D) == GLFW_PRESS)
 		m_spCamera->ProcessKeyboard(Movement::RIGHT, DeltaFrame);
+	if (glfwGetKey(pGLFWwindow, GLFW_KEY_Q) == GLFW_PRESS)
+		m_spCamera->ProcessKeyboard(Movement::UP, DeltaFrame);
+	if (glfwGetKey(pGLFWwindow, GLFW_KEY_X) == GLFW_PRESS)
+		m_spCamera->ProcessKeyboard(Movement::DOWN, DeltaFrame);
 }

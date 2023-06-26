@@ -7,7 +7,9 @@ enum Movement
 	FORWARD = 1,
 	BACKWARD,
 	LEFT,
-	RIGHT
+	RIGHT,
+	UP,
+	DOWN
 };
 
 class Camera

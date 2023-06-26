@@ -43,6 +43,12 @@ void Camera::ProcessKeyboard(Movement direction, float deltaTime)
 	case RIGHT:
 		m_vec3Eye += m_vec3Right * velocity;
 		break;
+	case UP:
+		m_vec3Eye += m_vec3Up * velocity;
+		break;
+	case DOWN:
+		m_vec3Eye -= m_vec3Up * velocity;
+		break;
 	default:
 		break;
 	}
