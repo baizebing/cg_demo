@@ -18,6 +18,9 @@ public:
 	glm::vec4 m_vecSpecularColor;
 	glm::vec4 m_vecAmbientColor;
 	glm::vec4 m_vecEmissiveColor;
+	bool m_bUseDiffuseTexture{};
+
+	int m_iDiffuseTextureId{};
 private:
 	void LoadMaterialTextures(std::shared_ptr<Texture>&spTexture, aiMaterial* aiMat,
 		aiTextureType aiTexture, TextureType eTextureType, const std::string& strPath);

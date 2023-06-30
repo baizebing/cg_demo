@@ -41,10 +41,11 @@ public:
 
 	void Use();
 	void ApplyState();
-	void ApplyTexture();
+	void ApplyTexture(int id);
 	void ApplyTransform(std::shared_ptr<Camera>spCamera);
 	void ApplyLights(std::shared_ptr<Camera> spCamera);
 	void ApplyMaterial(const glm::vec4& color);
+	void UseDiffuseTexture(bool useDiffuseTexture);
 
 	void SetBlend(float fBlend);
 	void SetDepthTest(bool bDepthTest);

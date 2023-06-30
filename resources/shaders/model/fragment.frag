@@ -29,6 +29,7 @@ uniform DirLight dirLight;
 uniform vec3 viewPos;
 
 uniform sampler2D texture_diffuse1;
+uniform bool use_diffuse_texture;
 
 vec3 CalcDirLight(DirLight light,vec3 normal, vec3 viewDir);
 
@@ -51,6 +52,11 @@ vec3 CalcDirLight(DirLight light,vec3 normal, vec3 viewDir)
 
     vec3 ambient = light.ambient * material.diffuse.rgb;
     vec3 diffuse = light.diffuse * diff * material.diffuse.rgb;
+    vec4 diffuse_texture = vec4(0.0);
+    if(use_diffuse_texture && fs_in.texCoord.x>0 && fs_in.texCoord.x<1.0 && fs_in.texCoord.y>0 && fs_in.texCoord.y<1.0){
+        diffuse_texture = texture(texture_diffuse1, fs_in.texCoord);
+    }     
+    diffuse = diffuse_texture.rgb*diffuse_texture.a+(1-diffuse_texture.a)*diffuse;
     vec3 specular = light.specular *spec* material.diffuse.rgb;
     return ambient+diffuse+specular;
 }

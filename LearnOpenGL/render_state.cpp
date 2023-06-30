@@ -85,7 +85,7 @@ void RenderState::ApplyState()
 	}
 }
 
-void RenderState::ApplyTexture()
+void RenderState::ApplyTexture(int id)
 {
 	if (m_spTexture == nullptr)
 	{
@@ -93,42 +93,42 @@ void RenderState::ApplyTexture()
 	}
 	unsigned int diffuseNr(1), specularNr(1), normalNr(1), heightNr(1);
 	auto vecTextures = m_spTexture->GetTexures();
-	for (size_t i = 0; i < vecTextures.size(); i++)
+	//for (size_t i = 0; i < vecTextures.size(); i++)
+	//{
+	glActiveTexture(GL_TEXTURE0);
+	std::string sNumber(""), sName("");
+	switch (vecTextures[id].eType)
 	{
-		glActiveTexture(GL_TEXTURE0 + i);
-		std::string sNumber(""), sName("");
-		switch (vecTextures[i].eType)
-		{
-		case DIFFUSE:
-		{
-			sNumber = std::to_string(diffuseNr++);
-			sName = "texture_diffuse";
-			break;
-		}
-		case SPECULAR:
-		{
-			sNumber = std::to_string(specularNr++);
-			sName = "texture_specular";
-			break;
-		}
-		case NORMAL:
-		{
-			sNumber = std::to_string(normalNr++);
-			sName = "texture_normal";
-			break;
-		}
-		case HEIGHT:
-		{
-			sNumber = std::to_string(heightNr++);
-			sName = "texture_height";
-			break;
-		}
-		default:
-			break;
-		}
-		m_spShader->SetInt(sName + sNumber, i);
-		glBindTexture(GL_TEXTURE_2D, vecTextures[i].uiID);
+	case DIFFUSE:
+	{
+		sNumber = std::to_string(diffuseNr++);
+		sName = "texture_diffuse";
+		break;
 	}
+	case SPECULAR:
+	{
+		sNumber = std::to_string(specularNr++);
+		sName = "texture_specular";
+		break;
+	}
+	case NORMAL:
+	{
+		sNumber = std::to_string(normalNr++);
+		sName = "texture_normal";
+		break;
+	}
+	case HEIGHT:
+	{
+		sNumber = std::to_string(heightNr++);
+		sName = "texture_height";
+		break;
+	}
+	default:
+		break;
+	}
+	m_spShader->SetInt(sName + sNumber, 0);
+	glBindTexture(GL_TEXTURE_2D, vecTextures[id].uiID);
+	//}
 }
 
 void RenderState::ApplyTransform(std::shared_ptr<Camera>spCamera)
@@ -208,6 +208,11 @@ void RenderState::ApplyMaterial(const glm::vec4& color)
 {
 	//m_spShader->SetVec3("material.diffuse", m_vecDiffuseColor);
 	m_spShader->SetVec4("material.diffuse", color);
+}
+
+void RenderState::UseDiffuseTexture(bool useDiffuseTexture)
+{
+	m_spShader->SetBool("use_diffuse_texture", useDiffuseTexture);
 }
 
 void RenderState::SetPatchVertices(int iVertices)

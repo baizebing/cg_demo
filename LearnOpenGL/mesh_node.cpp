@@ -11,7 +11,9 @@ MeshNode::~MeshNode()
 
 void MeshNode::Prender()
 {
+	m_spRenderState->ApplyTexture(m_iDiffuseTextureId);
 	m_spRenderState->ApplyMaterial(m_vecDiffuseColor);
+	m_spRenderState->UseDiffuseTexture(m_bUseDiffuseTexture);
 }
 
 void MeshNode::Draw()
@@ -34,7 +36,7 @@ void MeshNode::ProcessMesh(aiMesh* pMesh, const aiScene* pScene,const std::strin
 		}
 		if (pMesh->mTextureCoords[0])
 		{
-			vertex.TexCoords = glm::vec2(pMesh->mTextureCoords[0][i].x, pMesh->mTextureCoords[0][i].y);
+			vertex.TexCoords = glm::vec2(pMesh->mTextureCoords[0][i].x, 1.0 - pMesh->mTextureCoords[0][i].y);
 			vertex.Tangent = glm::vec3(pMesh->mTangents[i].x, pMesh->mTangents[i].y, pMesh->mTangents[i].z);
 			vertex.Bitangent = glm::vec3(pMesh->mBitangents[i].x, pMesh->mBitangents[i].y, pMesh->mBitangents[i].z);
 		}
@@ -74,10 +76,12 @@ void MeshNode::LoadMaterialTextures(std::shared_ptr<Texture>&spTexture, aiMateri
 		aiMat->GetTexture(aiTexture, i,&path);
 		std::string sPath = strPath + "/" + path.C_Str();
 		bool skip(false);
+		int texid = 0;
 		for (unsigned int j = 0; j < spTexture->GetTexures().size(); j++)
 		{
 			if (std::strcmp(spTexture->GetTexures()[j].sPath.data(), sPath.c_str()) == 0)
 			{
+				texid = j;
 				skip = true;
 				break;
 			}
@@ -85,6 +89,16 @@ void MeshNode::LoadMaterialTextures(std::shared_ptr<Texture>&spTexture, aiMateri
 		if (!skip)
 		{
 			spTexture->AddTexture(sPath.c_str(), eTextureType, true);
+			texid = spTexture->GetTexures().size() - 1;
+		}
+		// Use this texture in shader
+		m_iDiffuseTextureId = texid;
+		switch (aiTexture) {
+			case aiTextureType_DIFFUSE:
+				m_bUseDiffuseTexture = true;
+				break;
+			default:
+				break;
 		}
 	}
 }
@@ -102,6 +116,12 @@ void MeshNode::LoadMaterialColor(aiMaterial* aiMat, glm::vec4& diffuse, glm::vec
 	if (AI_SUCCESS != aiGetMaterialColor(aiMat, AI_MATKEY_COLOR_DIFFUSE, &matColor)) {
 		matColor = defaultColor;
 	}
+	std::string mat_name = aiMat->GetName().C_Str();
+	if (mat_name.find("bodyshell") != std::string::npos) {
+		matColor.r = 0.0f;
+		matColor.g = 0.3f;
+		matColor.b = 0.8f;
+	}
 	SetColor(matColor, diffuse);
 	if (AI_SUCCESS != aiGetMaterialColor(aiMat, AI_MATKEY_COLOR_SPECULAR, &matColor)) {
 		matColor = defaultColor;
@@ -109,7 +129,7 @@ void MeshNode::LoadMaterialColor(aiMaterial* aiMat, glm::vec4& diffuse, glm::vec
 	SetColor(matColor, specular);
 	if (AI_SUCCESS != aiGetMaterialColor(aiMat, AI_MATKEY_COLOR_AMBIENT, &matColor)) {
 		matColor = defaultColor;
-	}
+	}	
 	SetColor(matColor, ambient);
 	if (AI_SUCCESS != aiGetMaterialColor(aiMat, AI_MATKEY_COLOR_EMISSIVE, &matColor)) {
 		matColor = defaultColor;
