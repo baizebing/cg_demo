@@ -181,7 +181,7 @@
     <None Include="..\resources\shaders\Geometry\fragment.fs" />
     <None Include="..\resources\shaders\geometry\geometry.gs" />
     <None Include="..\resources\shaders\Geometry\vertex.vs" />
-    <None Include="..\resources\shaders\light\light.fs" />
+    <None Include="..\resources\shaders\light\light.frag" />
     <None Include="..\resources\shaders\light\light.vs" />
     <None Include="..\resources\shaders\model\fragment.frag" />
     <None Include="..\resources\shaders\model\vertex.vert" />

@@ -145,9 +145,6 @@
     <None Include="..\resources\shaders\geometry\geometry.gs">
       <Filter>shader\geometry</Filter>
     </None>
-    <None Include="..\resources\shaders\light\light.fs">
-      <Filter>shader\light</Filter>
-    </None>
     <None Include="..\resources\shaders\light\light.vs">
       <Filter>shader\light</Filter>
     </None>
@@ -156,6 +153,9 @@
     </None>
     <None Include="..\resources\shaders\model\vertex.vert">
       <Filter>shader\model</Filter>
+    </None>
+    <None Include="..\resources\shaders\light\light.frag">
+      <Filter>shader\light</Filter>
     </None>
   </ItemGroup>
 </Project>
