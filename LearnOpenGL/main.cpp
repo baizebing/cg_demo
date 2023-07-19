@@ -47,7 +47,7 @@ int main()
 	//spCarEntity->AddMeshNode("../resources/objects/backpack/backpack.obj", spRenderState);
 	spCarEntity->m_transform = std::make_shared<Transform>();
 	spCarEntity->m_transform->SetModelScale(glm::vec3(0.8,0.8,0.8));
-	spCarEntity->AddMeshNode("../resources/objects/intelcar/intel.obj", spRenderState);
+	spCarEntity->AddMeshNode("../resources/objects/intelcar/intelcar.obj", spRenderState);
 	spBowlEntity->m_transform = std::make_shared<Transform>();
 	spBowlEntity->m_transform->SetModelScale(glm::vec3(3.0,6.0,3.0));
 	spBowlEntity->AddMeshNode("../resources/objects/intelcar/bowl_with_texture.obj", spBowlRenderState);
