@@ -1,5 +1,6 @@
 #include "scene.h"
 #include "gl_resource.h"
+#include "orbit_camera.h"
 
 const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
@@ -12,7 +13,8 @@ int main()
 	spGLResource->CreateGLFWWindow(SCR_WIDTH, SCR_HEIGHT, WINDOW_NAME);
 	std::cout << "Graphics: " << spGLResource->GetGPUVersion() << std::endl;
 
-	auto spCamera = std::make_shared<Camera>(glm::vec3(0.f, 3.f, 5.f),-90.0f, -25.0f);
+	auto spCamera = std::make_shared<OrbitCamera>(6, 3);
+	//auto spCamera = std::make_shared<Camera>(glm::vec3(0.f, 3.f, 5.f), -90.0f, -25.0f);
 	auto spScene = std::make_shared<Scene>(spGLResource, spCamera);
 	spScene->SetBackGround(glm::vec4(0.2f, 0.3f, 0.3f, 1.0f));
 

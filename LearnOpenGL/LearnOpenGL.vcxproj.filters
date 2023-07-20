@@ -72,6 +72,9 @@
     <ClInclude Include="mesh_node.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="orbit_camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="entity.cpp">
@@ -114,6 +117,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="mesh_node.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="orbit_camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
