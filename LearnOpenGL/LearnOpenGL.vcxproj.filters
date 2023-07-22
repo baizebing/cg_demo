@@ -75,6 +75,9 @@
     <ClInclude Include="orbit_camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="bowl_node.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="entity.cpp">
@@ -122,6 +125,9 @@
     <ClCompile Include="orbit_camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="bowl_node.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shaders\Tessellation\triangle.tes">
@@ -162,6 +168,12 @@
     </None>
     <None Include="..\resources\shaders\light\light.frag">
       <Filter>shader\light</Filter>
+    </None>
+    <None Include="..\resources\shaders\model\bowl_fragment.frag">
+      <Filter>shader\model</Filter>
+    </None>
+    <None Include="..\resources\shaders\model\bowl_vertex.vert">
+      <Filter>shader\model</Filter>
     </None>
   </ItemGroup>
 </Project>

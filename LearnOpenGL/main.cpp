@@ -1,6 +1,7 @@
 #include "scene.h"
 #include "gl_resource.h"
 #include "orbit_camera.h"
+#include "bowl_node.h"
 
 const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
@@ -13,8 +14,8 @@ int main()
 	spGLResource->CreateGLFWWindow(SCR_WIDTH, SCR_HEIGHT, WINDOW_NAME);
 	std::cout << "Graphics: " << spGLResource->GetGPUVersion() << std::endl;
 
-	auto spCamera = std::make_shared<OrbitCamera>(6, 3);
-	//auto spCamera = std::make_shared<Camera>(glm::vec3(0.f, 3.f, 5.f), -90.0f, -25.0f);
+	//auto spCamera = std::make_shared<OrbitCamera>(6, 3);
+	auto spCamera = std::make_shared<Camera>(glm::vec3(0.f, 3.f, 5.f), -90.0f, -25.0f);
 	auto spScene = std::make_shared<Scene>(spGLResource, spCamera);
 	spScene->SetBackGround(glm::vec4(0.2f, 0.3f, 0.3f, 1.0f));
 
@@ -51,8 +52,13 @@ int main()
 	spCarEntity->m_transform->SetModelScale(glm::vec3(0.8,0.8,0.8));
 	spCarEntity->AddMeshNode("../resources/objects/intelcar/intelcar.obj", spRenderState);
 	spBowlEntity->m_transform = std::make_shared<Transform>();
-	spBowlEntity->m_transform->SetModelScale(glm::vec3(3.0,6.0,3.0));
-	spBowlEntity->AddMeshNode("../resources/objects/intelcar/bowl_with_texture.obj", spBowlRenderState);
+	spBowlEntity->m_transform->SetModelScale(glm::vec3(5.0,6.0,5.0));
+	// spBowlEntity->AddMeshNode("../resources/objects/intelcar/bowl_with_texture.obj", spBowlRenderState);
+	auto spBowl = std::make_shared<BowlNode>(0.5, 256);
+	spBowlEntity->AddGeometryNode(spBowl,spBowlRenderState);
+	auto bowltex = spBowlRenderState->GetTexture();
+	bowltex->AddTexture("../resources/objects/intelcar/highfov.png", TextureType::DIFFUSE);
+
 
 	spScene->AddRenderPass(spCarRenderPass);
 	spScene->AddRenderPass(spBowlRenderPass);

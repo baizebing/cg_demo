@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="bowl_node.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="geometry_node.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bowl_node.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="geometry_node.cpp" />
@@ -185,6 +187,8 @@
     <None Include="..\resources\shaders\Geometry\vertex.vs" />
     <None Include="..\resources\shaders\light\light.frag" />
     <None Include="..\resources\shaders\light\light.vs" />
+    <None Include="..\resources\shaders\model\bowl_fragment.frag" />
+    <None Include="..\resources\shaders\model\bowl_vertex.vert" />
     <None Include="..\resources\shaders\model\fragment.frag" />
     <None Include="..\resources\shaders\model\vertex.vert" />
     <None Include="..\resources\shaders\Tessellation\triangle.tes" />

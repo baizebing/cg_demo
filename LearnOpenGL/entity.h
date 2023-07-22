@@ -12,7 +12,7 @@ public:
 
 	void DrawSelfAndChild();
 	void AddMeshNode(const std::string& strPath, std::shared_ptr<RenderState>& spRenderState);
-	void AddGeometryNode(std::shared_ptr<Node> spNode);
+	void AddGeometryNode(std::shared_ptr<Node> spNode,  std::shared_ptr<RenderState>& spRenderState);
 
 	std::shared_ptr<Transform> m_transform{};
 private:

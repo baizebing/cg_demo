@@ -9,8 +9,10 @@ Entity::~Entity()
 
 }
 
-void Entity::AddGeometryNode(std::shared_ptr<Node> spNode)
+void Entity::AddGeometryNode(std::shared_ptr<Node> spNode, std::shared_ptr<RenderState>& spRenderState)
 {
+	spNode->SetRenderState(spRenderState);
+	spNode->SetTransform(m_transform);
 	m_listNode.push_back(spNode);
 }
 
