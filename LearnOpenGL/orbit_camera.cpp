@@ -25,6 +25,13 @@ OrbitCamera::OrbitCamera(float fRadius, float fHeight) :
 	UpdateCameraVectors();
 }
 
+void OrbitCamera::ProcessKeyboard(Movement direction, float deltaTime)
+{
+	Camera::ProcessKeyboard(direction, deltaTime);
+	m_fRadius = glm::distance(glm::vec2(m_vec3Eye.x, m_vec3Eye.z), glm::vec2(0));
+	m_fYawParameter = atan2(m_vec3Eye.z, m_vec3Eye.x) * m_fRadius;
+}
+
 void OrbitCamera::ProcessMouseMovement(float fXOffset, float fYOffset, bool bConstrainPitch/* = true*/)
 {
 	float fOffsetX = fXOffset * m_fMouseSensitivity;

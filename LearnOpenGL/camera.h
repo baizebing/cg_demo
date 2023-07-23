@@ -17,7 +17,7 @@ class Camera
 public:
 	Camera(glm::vec3 vec3Eye, float fYaw = -90.f, float fPicth = 0.0f);
 
-	void ProcessKeyboard(Movement direction, float deltaTime);
+	virtual void ProcessKeyboard(Movement direction, float deltaTime);
 	virtual void ProcessMouseMovement(float fXOffset, float fYOffset, bool bConstrainPitch = true);
 	void ProcessMouseScroll(float fYOffset);
 

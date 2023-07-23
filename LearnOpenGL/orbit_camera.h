@@ -23,6 +23,7 @@ class OrbitCamera : public Camera
 public:
 	OrbitCamera(float fRadius, float fHeight);
 
+	void ProcessKeyboard(Movement direction, float deltaTime) override;
 	void ProcessMouseMovement(float fXOffset, float fYOffset, bool bConstrainPitch = true) override;
 
 	void SetEye(const glm::vec3& vec3Eye) override;
