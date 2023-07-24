@@ -38,7 +38,7 @@ void main()
     vec3 norm = normalize(fs_in.Normal);
     vec3 viewDir = normalize(viewPos - fs_in.FragPos);
     vec3 result = CalcDirLight(dirLight, norm, viewDir);
-    FragColor = vec4(result, 1.0);
+    FragColor = vec4(result, material.diffuse.a);
 }
 
 vec3 CalcDirLight(DirLight light,vec3 normal, vec3 viewDir)

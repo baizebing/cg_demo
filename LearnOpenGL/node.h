@@ -34,6 +34,10 @@ public:
 	virtual void Prender();
 	virtual void Draw();
 
+	bool isTransparent() {
+		return m_fOpacity != 1.0f;
+	}
+
 protected:
 
 	void SetVertexs(std::vector<Vertex>& vecVertexs);
@@ -43,6 +47,8 @@ protected:
 protected:
 	std::shared_ptr<RenderState> m_spRenderState;
 	std::shared_ptr<Transform> m_spTransform;
+
+	float m_fOpacity{1.0f};
 
 private:
 	std::vector<Vertex> m_vecVertexs;

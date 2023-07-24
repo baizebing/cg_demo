@@ -20,6 +20,13 @@ void Entity::DrawSelfAndChild()
 {
 	for (auto& child : m_listNode)
 	{
+		if(child->isTransparent()) continue;
+		child->Prender();
+		child->Draw();
+	}
+	for (auto& child : m_listNode)
+	{
+		if(!child->isTransparent()) continue;
 		child->Prender();
 		child->Draw();
 	}

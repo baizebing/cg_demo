@@ -63,7 +63,7 @@ void MeshNode::ProcessMesh(aiMesh* pMesh, const aiScene* pScene,const std::strin
 	LoadMaterialTextures(spTexture, aiMaterial, aiTextureType_HEIGHT, TextureType::NORMAL, sDirectory);
 	LoadMaterialTextures(spTexture, aiMaterial, aiTextureType_AMBIENT, TextureType::HEIGHT, sDirectory);
 
-	LoadMaterialColor(aiMaterial, m_vecDiffuseColor, m_vecSpecularColor, m_vecAmbientColor, m_vecEmissiveColor);
+	LoadMaterialColor(aiMaterial);
 	SetVAOVBO();
 }
 
@@ -103,7 +103,7 @@ void MeshNode::LoadMaterialTextures(std::shared_ptr<Texture>&spTexture, aiMateri
 	}
 }
 
-void MeshNode::LoadMaterialColor(aiMaterial* aiMat, glm::vec4& diffuse, glm::vec4& specular, glm::vec4& ambient, glm::vec4& emissive)
+void MeshNode::LoadMaterialColor(aiMaterial* aiMat)
 {
 	aiColor4D defaultColor = {1.0f,1.0f, 1.0f, 1.0f};
 	aiColor4D matColor;
@@ -122,17 +122,25 @@ void MeshNode::LoadMaterialColor(aiMaterial* aiMat, glm::vec4& diffuse, glm::vec
 		matColor.g = 0.3f;
 		matColor.b = 0.8f;
 	}
-	SetColor(matColor, diffuse);
+	SetColor(matColor, m_vecDiffuseColor);
 	if (AI_SUCCESS != aiGetMaterialColor(aiMat, AI_MATKEY_COLOR_SPECULAR, &matColor)) {
 		matColor = defaultColor;
 	}
-	SetColor(matColor, specular);
+	SetColor(matColor, m_vecSpecularColor);
 	if (AI_SUCCESS != aiGetMaterialColor(aiMat, AI_MATKEY_COLOR_AMBIENT, &matColor)) {
 		matColor = defaultColor;
 	}	
-	SetColor(matColor, ambient);
+	SetColor(matColor, m_vecAmbientColor);
 	if (AI_SUCCESS != aiGetMaterialColor(aiMat, AI_MATKEY_COLOR_EMISSIVE, &matColor)) {
 		matColor = defaultColor;
 	}
-	SetColor(matColor, emissive);	
+ 	SetColor(matColor, m_vecEmissiveColor);
+
+	// Set opacity
+	float opacity = 1.0f;
+	if(AI_SUCCESS != aiMat->Get(AI_MATKEY_OPACITY, opacity)){
+		opacity = 1.0f;
+	}
+	m_fOpacity = opacity;
+	m_vecDiffuseColor.a = m_fOpacity;
 }

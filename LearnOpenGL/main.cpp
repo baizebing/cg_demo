@@ -34,6 +34,7 @@ int main()
 	// Render state
 	auto spRenderState = std::make_shared<RenderState>(spShader, spTexture);
 	spRenderState->SetDepthTest(true);
+	spRenderState->SetBlend(0.5f);
 	spRenderState->SetDrawMode(DRAW_MODE::ELEMENT_MODE);
 	spRenderState->SetPrimitiveMode(PRIMITIVE_MODE::TRIANGLES_MODE);
 	spRenderState->SetLights(vecLights);
@@ -59,9 +60,9 @@ int main()
 	auto bowltex = spBowlRenderState->GetTexture();
 	bowltex->AddTexture("../resources/objects/intelcar/highfov.png", TextureType::DIFFUSE);
 
-
-	spScene->AddRenderPass(spCarRenderPass);
+	// must render bowl first to enable blend test
 	spScene->AddRenderPass(spBowlRenderPass);
+	spScene->AddRenderPass(spCarRenderPass);
 
 	spScene->Draw();
 }

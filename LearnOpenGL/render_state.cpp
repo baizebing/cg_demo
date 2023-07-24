@@ -63,6 +63,8 @@ void RenderState::ApplyState()
 	if (m_bBlend)
 	{
 		m_spShader->SetFloat("mixValue", m_fBlend);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 	if (m_bDepthTest)
 	{

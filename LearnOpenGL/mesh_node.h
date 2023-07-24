@@ -17,12 +17,12 @@ public:
 	glm::vec4 m_vecDiffuseColor;
 	glm::vec4 m_vecSpecularColor;
 	glm::vec4 m_vecAmbientColor;
-	glm::vec4 m_vecEmissiveColor;
+	glm::vec4 m_vecEmissiveColor;	
 	bool m_bUseDiffuseTexture{};
 
 	int m_iDiffuseTextureId{};
 private:
 	void LoadMaterialTextures(std::shared_ptr<Texture>&spTexture, aiMaterial* aiMat,
 		aiTextureType aiTexture, TextureType eTextureType, const std::string& strPath);
-	void LoadMaterialColor(aiMaterial* aiMat, glm::vec4& diffuse, glm::vec4& specular, glm::vec4& ambient, glm::vec4& emissive);
+	void LoadMaterialColor(aiMaterial* aiMat);
 };

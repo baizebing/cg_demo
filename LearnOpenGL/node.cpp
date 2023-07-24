@@ -21,6 +21,11 @@ Node::~Node()
 
 void Node::Prender()
 {
+	if(isTransparent()){
+		glDepthMask(GL_FALSE);
+	}else{
+		glDepthMask(GL_TRUE);
+	}
 	if (m_spTransform != nullptr)
 	{
 		if (m_spTransform->GetModelRotUseTime())
@@ -66,6 +71,7 @@ void Node::Draw()
 		}
 	}
 	glBindVertexArray(0);
+	glDepthMask(GL_TRUE);
 	glActiveTexture(GL_TEXTURE0);
 }
 
